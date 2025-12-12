@@ -1,185 +1,87 @@
-🚀 Interview Practice Web App
+<div align="center">
 
-A smart and interactive Interview Practice Application built using Node.js + Express + Vanilla JS, designed to help users practice technical interview questions with real-time evaluation, category-based filtering, timers, auto-next questions, and a clean UI.
+# 🚀 Interview Practice Web App
 
-🔗 Live URL:
-https://devsupport.co.in/interview/
+This application helps you prepare for technical interviews by providing a realistic practice environment. You can answer questions, get instant feedback, and track your progress over time.
+Master technical interview questions across various categories including Data Structures, Algorithms, System Design, Database Management, and more. The app simulates real interview conditions.
+✨ Node.js • Express • Vanilla JavaScript • CSV Engine • PWA
 
-📸 Screenshot
+<br/>
 
-(Click to view the live app)
+<a href="https://devsupport.co.in/interview/">
+  <img src="https://img.shields.io/badge/Live Demo-00C853?style=for-the-badge&logo=googlechrome&logoColor=white" />
+</a>
+<img src="https://img.shields.io/badge/Status-Active-2962FF?style=for-the-badge" />
+<img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" />
 
-If you don't have /screenshot.png, upload one later — the link is already placed.
+</div>
 
-📘 Overview
+---
 
-This application allows users to practice interview questions from various categories such as:
+## 📸 **Screenshot (UI Preview)**  
 
-Laravel
+> Replace with your screenshot
 
-JavaScript
+<div align="center">
 
-React
+<img src="https://github.com/nirajj87/virtual-teacher/blob/main/public/vertual-teacher.png" width="700"/>
 
-Node.js
+</div>
 
-PHP
+---
 
-MySQL
+## ✨ **Key Features**
 
-And more…
+- 🔀 Random Interview Questions  
+- 🗂 Category-wise practice  
+- 🧠 Smart similarity-based answer checking  
+- 🎙 Voice (speech-to-text) answer input  
+- 📥 Upload your own CSV (custom Q/A)  
+- 🔄 No repetition until all questions asked  
+- ⏱ Difficulty-based timers  
+- 📳 Works Offline (PWA)  
 
-Users can upload their own CSV files containing Q/A pairs. The system automatically categorizes questions, ensures no repetition, and evaluates answers.
+---
 
-✨ Features
-🎯 Core Features
+## 🧪 CSV Format Example
 
-Random question generator
-
-Category selection
-
-Auto-skip for already asked questions
-
-Countdown timer (Easy / Medium / Hard modes)
-
-Real-time answer evaluation
-
-Speech-to-text answer input
-
-Works offline (PWA supported)
-
-Upload CSV to generate custom interview questions
-
-Shows count of total questions & categories
-
-🧠 AI Logic
-
-Uses string similarity to match user answers
-
-Shows accuracy percentage
-
-Provides expected answer for learning
-
-🏗️ Technology Stack
-Frontend
-
-HTML5
-
-CSS3
-
-Vanilla JavaScript
-
-Fetch API
-
-LocalStorage
-
-Service Worker (PWA support)
-
-Backend
-
-Node.js
-
-Express.js
-
-Multer (CSV upload)
-
-CSV-Parser
-
-String-Similarity
-
-File System (fs)
-
-Other
-
-JSON-based API
-
-Secure deployment on cPanel
-
-Error handling + rate limiting
-
-📂 Folder Structure
-project-root/
-│── public/
-│   ├── index.html
-│   ├── app.js
-│   ├── style.css
-│   ├── manifest.json
-│   ├── service-worker.js
-│── uploads/
-│   ├── sample-qa.csv
-│── server.js
-│── package.json
-│── README.md
-
-⚙️ Installation
-1. Clone the Repo
-git clone https://github.com/your-username/interview-practice-app.git
-cd interview-practice-app
-
-2. Install Dependencies
-npm install
-
-3. Run Server
-node server.js
-
-4. Visit in Browser
-http://localhost:3000
-
-🌐 Deployment (cPanel)
-
-This project is successfully deployed using:
-
-Node.js App Setup on cPanel
-
-Public folder served via Express static route
-
-Reverse proxy mapping
-
-Production build with PM2 or cPanel Node runner
-
-📝 API Endpoints
-GET /interview/api/question?category=Laravel
-
-Fetch random question.
-
-GET /interview/api/categories
-
-Fetch all categories.
-
-GET /interview/api/question-count
-
-Fetch total questions count.
-
-POST /interview/api/upload
-
-Upload CSV file.
-
-💡 How It Works
-
-User selects a category
-
-App requests a random filtered question
-
-Prevents repeated questions until all are completed
-
-Timer starts depending on difficulty
-
-User types or speaks the answer
-
-System compares and shows accuracy
-
-Auto-loads next question after submission
-
-🧪 CSV Format Example
+```csv
 question,answer,category
 "What is Laravel Middleware?","Middleware filters HTTP requests.",Laravel
 "Explain closures in JS","Functions with lexical scope.",JavaScript
+<div align="center">
+## 🛠️ Tech Stack
 
-🤝 Contributing
+| Layer    | Technology                       |
+| -------- | -------------------------------- |
+| Frontend | HTML, CSS, Vanilla JS, Fetch API |
+| Backend  | Node.js, Express.js              |
+| Uploads  | Multer, CSV-Parser               |
+| Logic    | string-similarity                |
+| Storage  | fs, LocalStorage                 |
+| Deploy   | cPanel Node App                  |
 
-Pull requests are welcome.
-For major updates, open an issue first to discuss changes.
+
+## ⚙️ Install & Run
+git clone https://github.com/your-username/interview-practice-app.git
+cd interview-practice-app
+npm install
+node server.js
+
+---
+
+
+✨ Author
+👤 Niraj Singh
+
+📧 Email: nirajkumar11288@gmail.com
+
+🌐 Portfolio: [https://devsupport.co.in/interview/userguide.html](https://devsupport.co.in/interview/userguide.html)
+
+💼 LinkedIn: [https://www.linkedin.com/in/niraj-kumar-singh-1309b3a6/](https://www.linkedin.com/in/niraj-kumar-singh-1309b3a6/)
 
 📜 License
 
-MIT License.
+MIT License © 2025 — Niraj Singh
+
+</div>
