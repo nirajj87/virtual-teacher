@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Practice App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-comments"></i> Interview Practice</h1>
+                <!-- Help Button in Header -->
+                <button id="helpBtn" class="btn-help" title="Open User Guide in New Tab">
+                    <i class="fas fa-question-circle"></i> Help
+                </button>
+                <div class="theme-switch">
+                    <input type="checkbox" id="darkToggle" class="toggle-checkbox">
+                    <label for="darkToggle" class="toggle-label">
+                        <span class="toggle-ball"></span>
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </label>
+                    <span class="toggle-text">Dark Mode</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-grid">
+            <!-- LEFT PANEL - SETUP -->
+            <div class="panel setup-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-cogs"></i> Setup</h2>
+                </div>
+                
+                <div class="panel-content">
+                  <div class="note">
+                        <i class="fas fa-info-circle"></i>
+                        <p>Already have a sample CSV loaded. Upload your own or use the default questions.</p>
+                    </div>
+                    <div class="upload-section">
+                        <div class="file-upload-area" id="fileUploadArea">
+                            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                            <p>Drag & drop your CSV file here</p>
+                            <p class="upload-subtext">or click to browse</p>
+                            <input type="file" id="fileInput" accept=".csv" class="file-input">
+                        </div>
+                        <button class="btn btn-secondary" onclick="uploadCSV()" id="uploadBtn" disabled>
+                            <i class="fas fa-upload"></i> Upload CSV
+                        </button>
+                        <div class="file-info" id="fileInfo"></div>
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <label for="categorySelect"><i class="fas fa-tags"></i> Category</label>
+                        <div class="select-wrapper">
+                            <select id="categorySelect" class="custom-select">
+                                <option value="">All Categories</option>
+                            </select>
+                            <i class="fas fa-chevron-down select-arrow"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="difficulty"><i class="fas fa-chart-line"></i> Difficulty</label>
+                        <div class="difficulty-buttons">
+                            <button class="difficulty-btn active" data-level="easy" onclick="setDifficulty('easy')">
+                                <span class="difficulty-label">Easy</span>
+                                <span class="difficulty-time">60s</span>
+                            </button>
+                            <button class="difficulty-btn" data-level="medium" onclick="setDifficulty('medium')">
+                                <span class="difficulty-label">Medium</span>
+                                <span class="difficulty-time">40s</span>
+                            </button>
+                            <button class="difficulty-btn" data-level="hard" onclick="setDifficulty('hard')">
+                                <span class="difficulty-label">Hard</span>
+                                <span class="difficulty-time">20s</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="leaderboard-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-trophy"></i> Best Score</h3>
+                            <button class="btn-icon" onclick="resetScore()" title="Reset Score">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                        </div>
+                        <div class="score-card" id="leaderboard">
+                            <div class="score-value">--</div>
+                            <div class="score-label">No score yet</div>
+                        </div>
+                    </div>
+
+                    <!-- Add this after the stats-grid -->
+              <div class="insights-section">
+                  <div class="section-header">
+                      <h3><i class="fas fa-chart-line"></i> Progress</h3>
+                  </div>
+                  <div class="insights-grid">
+                      <div class="insight-card">
+                          <div class="insight-icon">
+                              <i class="fas fa-percentage"></i>
+                          </div>
+                          <div class="insight-content">
+                              <div class="insight-value" id="avgAccuracy">0%</div>
+                              <div class="insight-label">Avg. Accuracy</div>
+                          </div>
+                      </div>
+                      <div class="insight-card">
+                          <div class="insight-icon">
+                              <i class="fas fa-bolt"></i>
+                          </div>
+                          <div class="insight-content">
+                              <div class="insight-value" id="bestStreak">0</div>
+                              <div class="insight-label">Best Streak</div>
+                          </div>
+                      </div>
+                      <div class="insight-card">
+                          <div class="insight-icon">
+                              <i class="fas fa-clock"></i>
+                          </div>
+                          <div class="insight-content">
+                              <div class="insight-value" id="avgTime">0s</div>
+                              <div class="insight-label">Avg. Time</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                </div>
+            </div>
+
+            <!-- RIGHT PANEL - PRACTICE -->
+            <div class="panel practice-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-brain"></i> Practice</h2>
+                </div>
+                
+                <div class="panel-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-label">Answered</div>
+                                <div class="stat-value" id="answered">0</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-label">Streak</div>
+                                <div class="stat-value" id="streak">0</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-label">Multiplier</div>
+                                <div class="stat-value multiplier" id="multiplier">1x</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-label">Score</div>
+                                <div class="stat-value" id="score">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timer-section">
+                        <div class="timer-container">
+                            <div class="timer-label">Time Remaining</div>
+                            <div class="timer-display">
+                                <i class="fas fa-clock"></i>
+                                <span id="timer">60</span>s
+                            </div>
+                            <div class="timer-progress">
+                                <div class="timer-progress-bar" id="timerBar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-question-circle"></i> Question</h3>
+                            <div class="question-controls">
+                                <button class="btn btn-primary" onclick="askQuestion()" id="askBtn">
+                                    <i class="fas fa-play"></i> Ask Question
+                                </button>
+                                <button id="freeTimeBtn" class="btn btn-warning" title="Take unlimited time to think (Ctrl+Shift+F)">
+                                    <i class="fas fa-hourglass-end"></i> Stop Time
+                                </button>
+                                <button class="btn btn-outline" onclick="skipQuestion()" id="skipBtn" disabled>
+                                    <i class="fas fa-forward"></i> Skip
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="question-card" id="question">
+                            <div class="question-placeholder">
+                                <i class="fas fa-lightbulb"></i>
+                                <p>Click "Ask Question" to start practicing!</p>
+                            </div>
+                        </div>
+
+                        <div class="answer-section">
+                            <label for="answer"><i class="fas fa-pencil-alt"></i> Your Answer</label>
+                            <div class="textarea-wrapper">
+                                <textarea id="answer" placeholder="Type your answer here..."></textarea>
+                                <div class="textarea-footer">
+                                    <div class="char-count">
+                                        <span id="charCount">0</span> characters
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="voice-controls">
+                                <button class="btn voice-btn" onclick="startListening()" id="speakBtn">
+                                    <i class="fas fa-microphone"></i> Speak Answer
+                                </button>
+                                <button class="btn voice-btn stop" onclick="stopListening()" id="stopBtn" disabled>
+                                    <i class="fas fa-stop"></i> Stop
+                                </button>
+                                <div class="voice-status" id="voiceStatus">
+                                    <i class="fas fa-circle recording"></i> Listening...
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-success btn-submit" onclick="submitAnswer()" id="submitBtn" disabled>
+                            <i class="fas fa-paper-plane"></i> Submit Answer
+                        </button>
+
+                        <div class="result-section" id="result">
+                            <div class="result-header">
+                                <h4><i class="fas fa-chart-bar"></i> Result</h4>
+                            </div>
+                            <div class="result-content">
+                                <div class="similarity-score">
+                                    <div class="score-circle" id="scoreCircle">
+                                        <span id="similarityValue">--</span>%
+                                    </div>
+                                    <div class="score-text">
+                                        <div class="accuracy">Accuracy</div>
+                                        <div class="feedback" id="feedback">Submit to see results</div>
+                                    </div>
+                                </div>
+                                <div class="correct-answer">
+                                    <div class="answer-label">Correct Answer:</div>
+                                    <div class="answer-text" id="correctAnswer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+
+        <footer class="footer">
+            <p>Interview Practice App &copy; 2024 | Questions Loaded: <span id="questionCount">0</span></p>
+        </footer>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+    <script src="modelScript.js"></script>
+    
+</body>
+</html>
