@@ -1,441 +1,155 @@
-🚀 Interview Practice Web App
-A smart and interactive Interview Practice Application built using Node.js + Express + Vanilla JS, designed to help users practice technical interview questions with real-time evaluation, category-based filtering, timers, auto-next questions, and a clean UI.
+<!-- Improved README.md for your Interview Practice Web App -->
 
-🔗 Live URL: https://devsupport.co.in/interview/
+# 🧠 Interview Practice Web App
 
-📸 Screenshots
-🖥️ Desktop View
-https:///screenshot-desktop.png
-Main interface with question panel, answer area, and progress dashboard
+> A smart, interactive platform to master technical interviews with AI-powered evaluation and real-time progress tracking.
 
-📱 Mobile View
-https:///screenshot-mobile.png
-Responsive design for mobile devices
+**Live Demo:** 🌐 [https://devsupport.co.in/virtual-teacher/](https://devsupport.co.in/virtual-teacher/)
 
-📊 Learning Dashboard
-https:///screenshot-dashboard.png
-Learning progress tracking with charts and recommendations
+![Application Screenshot](https://github.com/nirajj87/virtual-teacher/blob/main/public/vertual-teacher.png)
 
-📘 Overview
-This application allows users to practice interview questions from various technical domains including:
+---
+## 📖 Table of Contents
+1.  [✨ Overview](#-overview)
+2.  [🚀 Features](#-features)
+3.  [🛠️ Tech Stack](#️-tech-stack)
+4.  [📦 Installation](#-installation)
+5.  [⚙️ Configuration](#️-configuration)
+6.  [🧪 Usage](#-usage)
+7.  [📁 Project Structure](#-project-structure)
+8.  [🤝 Contributing](#-contributing)
+9.  [📜 License](#-license)
 
-Laravel
+---
+## ✨ Overview
 
-JavaScript
+The **Interview Practice Web App** is a comprehensive tool designed to help learners and job seekers practice technical interview questions effectively. Users can upload custom question banks via CSV, practice under timed conditions, receive instant accuracy feedback, and track their learning journey with detailed analytics.
 
-React
+**Core Concept:** Transform static Q&A lists into an interactive, gamified learning experience that adapts to user performance.
 
-Node.js
+---
+## 🚀 Features
 
-PHP
+### 🎯 **Practice Modes**
+*   **Practice Mode**: Answer questions with instant feedback and correct answers.
+*   **Test Mode**: Simulate a real exam with 10 questions and a 30-second timer each[citation:2].
+*   **Review Mode**: Revisit and master previously incorrectly answered questions.
+*   **Free Time Mode**: Disable the timer for complex problem-solving.
 
-MySQL
+### 📊 **Learning Intelligence**
+*   **Real-time Evaluation**: Uses string similarity algorithms to score open-ended answers.
+*   **Progress Dashboard**: Visual charts track accuracy, streaks, and time-per-question over time.
+*   **Smart Recommendations**: The system analyzes weak spots and suggests areas for improvement.
+*   **Achievement System**: Unlock badges for milestones like first question, perfect scores, and consistency streaks.
 
-Python
+### 🎨 **User Experience**
+*   **Voice-to-Text**: Speak your answers using the Web Speech API.
+*   **Adaptive Timer**: Configurable timers for Easy (60s), Medium (40s), and Hard (20s) difficulties.
+*   **Theme Switching**: Toggle between light and dark modes.
+*   **PWA Support**: Install as an app and work offline.
 
-HTML/CSS
+---
+## 🛠️ Tech Stack
 
-And 18+ more categories...
+| Layer | Technology |
+| :--- | :--- |
+| **Frontend** | Vanilla JS, HTML5, CSS3 (with Variables for Theming), Chart.js |
+| **Backend** | Node.js, Express.js |
+| **Data Processing** | CSV-Parser, String-Similarity NPM Package |
+| **Persistence** | LocalStorage (Client), File System (Server) |
+| **Deployment** | cPanel with PM2 Process Manager |
 
-Users can upload their own CSV files containing Q/A pairs. The system automatically categorizes questions, ensures no repetition, evaluates answers using AI-powered similarity checking, and tracks learning progress over time.
+---
+## 📦 Installation & Quick Start
 
-✨ Features
-🎯 Core Features
-Random question generator with intelligent distribution
+Follow these steps to run the project locally:
 
-Category selection from 18+ technical domains
+```bash
+# 1. Clone the repository
+git clone https://github.com/nirajj87/virtual-teacher.git
+cd virtual-teacher
 
-Auto-skip for already asked questions
-
-Countdown timer with Easy/Medium/Hard difficulty modes
-
-Real-time answer evaluation using string similarity algorithms
-
-Speech-to-text answer input with voice recognition
-
-Works offline (PWA supported)
-
-Upload CSV to generate custom interview questions
-
-Shows count of total questions & available categories
-
-🧠 Study Modes
-Practice Mode - Normal practice with instant feedback
-
-Test Mode - Timed exam simulation (10 questions, 30s each)
-
-Review Mode - Practice previously incorrect answers
-
-Free Time Mode - Unlimited time for complex questions
-
-📊 Learning Analytics
-Overall progress tracking with circular progress indicator
-
-Topic mastery calculation per category
-
-Weekly progress charts (accuracy vs questions)
-
-Response time analytics with averages
-
-Achievement system with badges
-
-Smart recommendations based on performance
-
-Streak tracking and best performance records
-
-🏆 Gamification
-Score system with multipliers for streaks
-
-Achievements for milestones (First Question, 5-Streak, Perfect Score, etc.)
-
-Confetti animations for perfect scores
-
-Leaderboard for best scores
-
-🏗️ Technology Stack
-Frontend
-HTML5 with semantic markup
-
-CSS3 with CSS Variables for theming
-
-Vanilla JavaScript (no frameworks)
-
-Chart.js for data visualization
-
-Web Speech API for voice recognition
-
-Fetch API for server communication
-
-LocalStorage for offline data persistence
-
-Service Worker (PWA support)
-
-Responsive Design with mobile-first approach
-
-Backend
-Node.js runtime environment
-
-Express.js web framework
-
-Multer for CSV file uploads
-
-CSV-Parser for data processing
-
-String-Similarity for answer evaluation
-
-File System (fs) for data management
-
-Development & Deployment
-Git for version control
-
-cPanel for deployment
-
-PM2 for process management
-
-JSON-based REST API
-
-Error handling with user-friendly messages
-
-Rate limiting for API protection
-
-📂 Folder Structure
-text
-project-root/
-│
-├── public/
-│   ├── index.html              # Main application page
-│   ├── app.js                  # Main application logic
-│   ├── learning-progress.js    # Dashboard functionality
-│   ├── styles.css              # Main stylesheet
-│   ├── learning-progress.css   # Dashboard styles
-│   ├── manifest.json           # PWA manifest
-│   └── service-worker.js       # Service worker for offline
-│
-├── uploads/
-│   ├── sample-qa.csv           # Default question bank
-│   └── [user-uploads]/         # User uploaded CSV files
-│
-├── server.js                   # Express server
-├── package.json                # Dependencies and scripts
-├── README.md                   # This documentation
-└── .htaccess                   # Apache configuration
-⚙️ Installation & Setup
-1. Clone the Repository
-bash
-git clone https://github.com/your-username/interview-practice-app.git
-cd interview-practice-app
-2. Install Dependencies
-bash
+# 2. Install backend dependencies
 npm install
-3. Configure Environment
-Create a .env file (optional for development):
 
-env
-PORT=3000
-NODE_ENV=development
-BASE_PATH=/interview
-4. Add Sample Questions
-Place your CSV file in the uploads/ directory with format:
-
-csv
-question,answer,category
-"What is Laravel Middleware?","Middleware filters HTTP requests","Laravel"
-"Explain closures in JS","Functions with lexical scope","JavaScript"
-5. Start Development Server
-bash
+# 3. Start the development server
 npm start
-# or for development with auto-reload
-npm run dev
-6. Access Application
-Open browser and navigate to:
+# or use 'npm run dev' for auto-reload
 
-text
-http://localhost:3000
-🌐 Deployment (cPanel)
-This project is successfully deployed on cPanel using:
+# 4. Open your browser and navigate to:
+# http://localhost:3000
+Prerequisite: Ensure you have Node.js (v16 or higher) installed on your system.
 
-Deployment Steps:
-Node.js App Setup in cPanel
+⚙️ Configuration
+Backend (server.js)
+Key server-side settings can be adjusted:
 
-Application root set to project directory
-
-Application URL mapped to /interview
-
-Environment variables configured in cPanel
-
-Start script set to node server.js
-
-PM2 process manager for automatic restarts
-
-cPanel Configuration:
-Application mode: Production
-
-Node.js version: 18.x or higher
-
-Application URL: https://yourdomain.com/interview
-
-Start command: node server.js
-
-App root: /home/username/interview-practice-app
-
-📝 API Endpoints
-Method	Endpoint	Description
-GET	/api/health	Server health check
-GET	/api/question	Get random question
-GET	/api/question?category=JavaScript	Get category-specific question
-GET	/api/categories	Get all available categories
-GET	/api/question-count	Get total questions count
-POST	/api/answer	Submit answer for evaluation
-POST	/api/upload	Upload CSV file
-GET	/api/test-questions	Get test questions (Test mode)
-Example API Response:
-json
-{
-  "question": "What is closure in JavaScript?",
-  "answer": "A function with access to its outer scope",
-  "category": "JavaScript",
-  "index": 42
-}
-💡 How It Works
-1. Question Selection
-User selects a category (or "All Categories")
-
-System fetches random question from selected category
-
-Prevents question repetition using session tracking
-
-Shows question with category tag and difficulty indicator
-
-2. Answer Submission
-User types or speaks answer using voice recognition
-
-Timer counts down based on selected difficulty
-
-System calculates similarity between user answer and correct answer
-
-Shows accuracy percentage with visual feedback
-
-Provides correct answer for learning
-
-3. Learning Progress
-Tracks accuracy, response times, and streaks
-
-Calculates topic mastery based on category performance
-
-Generates weekly progress charts
-
-Provides personalized recommendations
-
-Awards achievements for milestones
-
-4. Study Modes
-Practice: Normal mode with feedback
-
-Test: Timed exam with 10 questions
-
-Review: Focus on previously incorrect answers
-
-Free Time: No time pressure for complex questions
-
-🧪 CSV Format Requirements
-Required Format:
-csv
-question,answer,category
-"What is Laravel Middleware?","Middleware filters HTTP requests","Laravel"
-"Explain closures in JS","Functions with lexical scope","JavaScript"
-"React useState hook","Manages state in functional components","React"
-CSV Rules:
-First row must be headers: question,answer,category
-
-Questions and answers should be in quotes if they contain commas
-
-Categories are auto-detected and sorted
-
-Maximum file size: 5MB
-
-Supported encoding: UTF-8
-
-🎨 UI/UX Features
-Theming System
-Light/Dark mode toggle
-
-CSS variables for easy theme customization
-
-Smooth transitions and animations
-
-Responsive Design
-Mobile-first approach
-
-Breakpoints for tablets and desktops
-
-Touch-friendly controls on mobile
-
-Accessibility
-Keyboard navigation support
-
-Screen reader compatible
-
-High contrast mode ready
-
-Focus indicators for all interactive elements
-
-User Experience
-Toast notifications for actions
-
-Loading states with spinners
-
-Error messages with recovery options
-
-Auto-save progress
-
-Session persistence
-
-🔧 Configuration Options
-Server Configuration (server.js):
 javascript
 const config = {
   port: process.env.PORT || 3000,
   uploadLimit: '5mb',
-  questionLimit: 50, // Questions per session
+  questionLimit: 50, // Max questions per session per category
   sessionTimeout: 30 * 60 * 1000, // 30 minutes
-  allowedCategories: ['JavaScript', 'React', 'Node.js', 'Laravel', 'PHP', 'MySQL']
 };
-Client Configuration (app.js):
+Frontend (app.js)
+Client-side constants for game mechanics:
+
 javascript
 const CONFIG = {
-  TIMER: {
-    EASY: 60,
-    MEDIUM: 40,
-    HARD: 20,
-    TEST: 30
-  },
-  SCORING: {
-    PERFECT_THRESHOLD: 90,
-    GOOD_THRESHOLD: 70,
-    STREAK_MULTIPLIERS: [1, 2, 3]
-  }
+  TIMER: { EASY: 60, MEDIUM: 40, HARD: 20, TEST: 30 },
+  SCORING: { PERFECT_THRESHOLD: 90, GOOD_THRESHOLD: 70 }
 };
+🧪 Usage Guide
+For Learners
+Select a category and difficulty.
+
+Click "Ask Question" - a random question loads with a countdown timer.
+
+Type or speak your answer in the provided area.
+
+Submit to see your accuracy score and the model answer.
+
+Switch to "Review Mode" to focus on your past mistakes.
+
+For Admins/Content Creators
+Prepare a CSV file with question, answer, category columns.
+
+Use the upload panel to import the file. The system automatically parses and categorizes questions.
+
+The new questions are instantly available for practice in the selected category.
+
+CSV Format Example:
+
+csv
+question,answer,category
+"What is a Closure in JavaScript?","A function with access to its outer scope","JavaScript"
+"Explain Laravel Middleware.","Filters HTTP requests","Laravel"
+📁 Project Structure
+text
+virtual-teacher/
+├── public/                 # Frontend static files
+│   ├── index.html         # Main application page
+│   ├── app.js             # Core application logic
+│   ├── styles.css         # Main stylesheet
+│   └── learning-progress.js # Dashboard analytics
+├── uploads/               # Default and user-uploaded CSV files
+├── server.js              # Express.js backend server
+├── package.json           # NPM dependencies and scripts
+└── README.md              # This documentation file
 🤝 Contributing
-We welcome contributions! Here's how:
+Contributions are welcome! If you have an idea for a new feature or find a bug, please follow these steps:
 
-Fork the repository
+Fork the repository.
 
-Create a feature branch: git checkout -b feature/amazing-feature
+Create a Feature Branch: git checkout -b feature/AmazingFeature
 
-Commit your changes: git commit -m 'Add amazing feature'
+Commit Your Changes: git commit -m 'Add some AmazingFeature'
 
-Push to the branch: git push origin feature/amazing-feature
+Push to the Branch: git push origin feature/AmazingFeature
 
-Open a Pull Request
+Open a Pull Request with a clear description of the changes.
 
-Development Guidelines:
-Follow existing code style
-
-Add comments for complex logic
-
-Update documentation for new features
-
-Test thoroughly before submitting
-
-Report Issues:
-Use GitHub Issues
-
-Include steps to reproduce
-
-Add screenshots if applicable
-
-Mention browser/device details
+Please ensure your code follows the existing style and includes relevant documentation updates.
 
 📜 License
-MIT License
-
-Copyright (c) 2024 DevSupport
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-🙏 Acknowledgments
-Icons: Font Awesome
-
-Charts: Chart.js
-
-Similarity Algorithm: string-similarity npm package
-
-Voice Recognition: Web Speech API
-
-Deployment: cPanel Node.js App Support
-
-📞 Support & Contact
-GitHub Issues: Report bugs or request features
-
-Live Demo: https://devsupport.co.in/interview/
-
-Documentation: This README file
-
-🚀 Quick Start for Users
-Visit the application URL
-
-Select a category from the dropdown
-
-Choose difficulty level
-
-Click "Ask Question" to start
-
-Type or speak your answer
-
-Submit to see your score
-
-Review incorrect answers in Review Mode
-
-Track your progress in the Learning Dashboard
-
-⭐ Star this repository if you found it useful!
-
-Happy Interview Practicing! 🎯
+Distributed under the MIT License. See the LICENSE file for more information.
