@@ -3,15 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interview Practice App</title>
+    <title>Virtual Teacher App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="learning-progress.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CHLYCVS9S7"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-CHLYCVS9S7');
+    </script>
 </head>
 <body>
     <div class="container">
         <header class="header">
             <div class="header-content">
-                <h1><i class="fas fa-comments"></i> Interview Practice</h1>
+                <h1><i class="fas fa-comments"></i> Virtual Teacher</h1>
                 <!-- Help Button in Header -->
                 <button id="helpBtn" class="btn-help" title="Open User Guide in New Tab">
                     <i class="fas fa-question-circle"></i> Help
@@ -81,6 +91,171 @@
                             </button>
                         </div>
                     </div>
+
+                    <!-- STUDY MODES SECTION - Add this after difficulty section -->
+                    <div class="form-group">
+                        <label for="studyMode"><i class="fas fa-graduation-cap"></i> Study Mode</label>
+                        <div class="study-mode-buttons">
+                            <button class="study-mode-btn active" data-mode="practice" onclick="setStudyMode('practice')">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Practice</span>
+                                <small class="mode-desc">Answer with feedback</small>
+                            </button>
+                            <button class="study-mode-btn" data-mode="test" onclick="setStudyMode('test')">
+                                <i class="fas fa-clock"></i>
+                                <span>Test Mode</span>
+                                <small class="mode-desc">Timed exam</small>
+                            </button>
+                            <button class="study-mode-btn" data-mode="review" onclick="setStudyMode('review')">
+                                <i class="fas fa-history"></i>
+                                <span>Review</span>
+                                <small class="mode-desc">Past mistakes</small>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PROGRESS DASHBOARD SECTION - Add after study modes -->
+                    <!-- Learning Progress Section -->
+<div class="learning-progress-panel">
+    <div class="panel-header">
+        <h2><i class="fas fa-chart-line"></i> Learning Progress</h2>
+    </div>
+    <div class="panel-content">
+        <!-- Progress Overview -->
+        <div class="progress-overview">
+            <div class="progress-chart-container">
+                <div class="circular-progress" data-progress="0">
+                    <div class="inner-circle">
+                        <span class="progress-percentage">0%</span>
+                        <small>Overall Progress</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-stats-grid">
+                <div class="progress-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="topicMastery">0</div>
+                        <div class="stat-label">Topic Mastery</div>
+                    </div>
+                </div>
+                
+                <div class="progress-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="currentStreak">0</div>
+                        <div class="stat-label">Current Streak</div>
+                    </div>
+                </div>
+                
+                <div class="progress-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="avgResponseTime">0s</div>
+                        <div class="stat-label">Avg Response</div>
+                    </div>
+                </div>
+                
+                <div class="progress-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="achievementsCount">0</div>
+                        <div class="stat-label">Achievements</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Weekly Progress Chart -->
+        <div class="weekly-progress-section">
+            <h3><i class="fas fa-calendar-week"></i> Weekly Progress</h3>
+            <div class="progress-metrics">
+                <div class="metric">
+                    <span class="metric-label">Accuracy</span>
+                    <div class="metric-bar">
+                        <div class="metric-fill" id="accuracyBar" style="width: 0%"></div>
+                    </div>
+                    <span class="metric-value" id="accuracyValue">0%</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Questions</span>
+                    <div class="metric-bar">
+                        <div class="metric-fill" id="questionsBar" style="width: 0%"></div>
+                    </div>
+                    <span class="metric-value" id="questionsValue">0</span>
+                </div>
+            </div>
+            
+            <!-- Progress Chart -->
+            <div class="chart-container">
+                <canvas id="weeklyProgressChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Progress Data -->
+        <div class="progress-data-section">
+            <div id="progressDataPlaceholder">
+                <div class="placeholder-content">
+                    <i class="fas fa-chart-bar"></i>
+                    <p>Progress data will appear here</p>
+                    <small>Answer more questions to see your progress</small>
+                </div>
+            </div>
+            
+            <div id="progressDataContent" style="display: none;">
+                <div class="detailed-stats">
+                    <h4>Detailed Statistics</h4>
+                    <div class="detailed-stats-grid">
+                        <div class="detailed-stat">
+                            <span>Total Questions</span>
+                            <strong id="totalQuestions">0</strong>
+                        </div>
+                        <div class="detailed-stat">
+                            <span>Correct Answers</span>
+                            <strong id="correctAnswers">0</strong>
+                        </div>
+                        <div class="detailed-stat">
+                            <span>Accuracy Rate</span>
+                            <strong id="accuracyRate">0%</strong>
+                        </div>
+                        <div class="detailed-stat">
+                            <span>Best Streak</span>
+                            <strong id="bestStreakValue">0</strong>
+                        </div>
+                        <div class="detailed-stat">
+                            <span>Time/Question</span>
+                            <strong id="timePerQuestion">0s</strong>
+                        </div>
+                        <div class="detailed-stat">
+                            <span>Mastered Topics</span>
+                            <strong id="masteredTopics">0</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Smart Recommendations -->
+        <div class="smart-recommendations">
+            <h3><i class="fas fa-lightbulb"></i> Smart Recommendations</h3>
+            <div id="recommendationsContainer">
+                <div class="analyzing-state">
+                    <i class="fas fa-chart-line fa-spin"></i>
+                    <p>Analyzing your performance...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                     <div class="leaderboard-section">
                         <div class="section-header">
@@ -273,14 +448,16 @@
         </main>
 
         <footer class="footer">
-            <p>Interview Practice App &copy; 2024 | Questions Loaded: <span id="questionCount">0</span></p>
+            <p>Virtual Teacher App &copy; 2025| develop& mantained by <a href="https://devsupport.co.in/profile/">devsupport</a> | Questions Loaded: <span id="questionCount">0</span> </p>
         </footer>
     </div>
     
     <!-- Toast Notification -->
     <div id="toast" class="toast"></div>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
+    
+    <script src="learning-progress.js"></script>
     <script src="modelScript.js"></script>
     
 </body>
